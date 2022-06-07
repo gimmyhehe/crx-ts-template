@@ -1,0 +1,66 @@
+.statistic-page.app-container {
+  width: 100%;
+  padding: 20px;
+  .flex{
+    display: flex;
+    align-items: center;
+  }
+  .header , .tool-bar{
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 5px 15px;
+    border-color: #ddd;
+  }
+  .header {
+    margin-bottom: 10px;
+  }
+  .tool-bar-item {
+    display: inline-block;
+    margin-left: 16px;
+  }
+  .header-title {
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 16px;
+  }
+  .collapse-box {
+    margin-top: 20px;
+  }
+  #statistic-text {
+    pre {
+      outline: none;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  }
+  .statistic-box {
+    cursor: pointer;
+  }
+  .color-icon {
+    height: 16px;
+    width: 16px;
+    border: 1px solid #000;
+    display: inline-block;
+  }
+  .search-evidence-highlight-hover {
+    position: relative;
+  }
+  .ant-btn + .ant-btn {
+    margin-left: 16px;
+  }
+  .search-evidence-highlight-hover::after {
+    content: '\53d6\6d88\6807\8bb0'; // 直接用utf-8中文会乱码，需要转换
+    background: #666;
+    color: #fff;
+    font-size: 12px;
+    padding: 3px;
+    border-radius: 3px;
+    position: absolute;
+    left: 0px;
+    top: -25px;
+  }
+}

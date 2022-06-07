@@ -1,0 +1,12 @@
+.highlight-extension.app-container {
+  width: 420px;
+  padding: 8px;
+  .title{
+    position: relative;
+    margin-bottom: 6px;
+  }
+  .switch-flag {
+    position: absolute;
+    right: 0;
+  }
+}
