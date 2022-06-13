@@ -1,10 +1,11 @@
 
-import { SEARCH, SCREENSHOT, CDP_VERSION, SEACRH_CONFIG_KEY,
+import { SEARCH, SCREENSHOT, SEACRH_CONFIG_KEY,
 	SEACRH_TIME_CONFIG_KEY, STATISTICS, STATISTIC_STR, STATISTIC_STYLE
 } from '../common/constant'
-import { base64ToUrl, getCurrentTab } from '../common/uitls'
+import { getCurrentTab } from '../common/uitls'
 import { searchConfig } from '../common/config'
 import Storage from '../common/storage'
+import fullScreenshot from './fullScreenshot';
 
 chrome.runtime.onInstalled.addListener(() => {
 	console.log('搜证插件init');
@@ -34,28 +35,9 @@ chrome.runtime.onInstalled.addListener(() => {
 		}
 	})
 })
-// 将debuggerAPI附加到某个tab上
-const attach = (tabId: number) => new Promise((resolve) => {
-	if (!tabId) return console.error('tabId not exist');
-	chrome.debugger.attach(
-		{ tabId },
-		CDP_VERSION,
-		() => {
-			resolve(null)
-		}
-	)
-})
 
-// 将debuggerAPI从tab上移除
-const detach = (tabId: number) => new Promise((resolve) => {
-	if (!tabId) return console.error('tabId not exist');
-	chrome.debugger.detach(
-		{ tabId },
-		() => {
-			resolve(null)
-		}
-	)
-})
+
+
 
 chrome.contextMenus.create({
   id: SEARCH,
@@ -92,30 +74,7 @@ const doSearch = (params: any) => {
 }
 
 const doScreenshot = () => {
-	getCurrentTab().then(({ id }: any) => {
-		attach(id).then(() => {
-			chrome.tabs.executeScript(id, {
-				code: '[document.documentElement.scrollWidth, document.documentElement.scrollHeight]'
-			}, (...args) => {
-				const [width = 1500, height = 3000] = args[0][0] || [];
-				console.log(width, height, 111111)
-				chrome.debugger.sendCommand({ tabId: id }, 'Page.captureScreenshot', { captureBeyondViewport: true, format: 'png', clip: { x: 0, y: 0, width, height, scale: 1 } }, (result: any) => {
-					base64ToUrl({b64data: result.data, contentType: 'image/png'}).then((res: any) => {
-						// 转后后的blob对象
-						console.log('blob', res)
-						// chrome.downloads.download(
-						// 	{ url: res },
-						// 	(id) => {
-						// 		console.log('download finish, downloadId:', id)
-						// 	},
-						// )
-					})
-					// detach(id)
-					return result;
-				})
-			})
-		})
-	})
+	fullScreenshot();
 }
 
 const doStatistics = (params: any) => {
