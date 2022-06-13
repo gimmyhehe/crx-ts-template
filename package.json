@@ -1,6 +1,8 @@
 {
   "name": "extension-search-evidence",
-  "version": "0.0.4",
+  "version": "0.0.6",
+  "extensionName": "搜证插件",
+  "description": "搜证插件",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
@@ -82,8 +84,8 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "cross-env INLINE_RUNTIME_CHUNK=false node scripts/build.js",
-    "build:dev": "cross-env INLINE_RUNTIME_CHUNK=false NODE_ENV=development webpack --config config/webpackWatch.config.js",
+    "build": "node buildManifest.js && cross-env INLINE_RUNTIME_CHUNK=false node scripts/build.js",
+    "build:dev": "node buildManifest.js && cross-env INLINE_RUNTIME_CHUNK=false NODE_ENV=development webpack --config config/webpackWatch.config.js",
     "watch": "cross-env INLINE_RUNTIME_CHUNK=false NODE_ENV=production webpack --watch --config config/webpackWatch.config.js",
     "test": "node scripts/test.js"
   },
@@ -165,6 +167,7 @@
   "devDependencies": {
     "babel-plugin-import": "^1.13.3",
     "cross-env": "^7.0.3",
+    "hygen": "^6.2.7",
     "webpack-cli": "^4.9.2"
   }
 }

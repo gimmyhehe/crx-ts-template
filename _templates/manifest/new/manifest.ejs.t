@@ -1,8 +1,12 @@
+---
+to: public/manifest.json
+force: true
+---
 { 
   "manifest_version": 2,
-  "name": "搜证插件",
-  "version": "0.0.6",
-  "description": "搜证插件",
+  "name": "<%= extensionName %>",
+  "version": "<%= version %>",
+  "description": "<%= description %>",
   "browser_action": {
     "default_icon": {
       "19": "/logo48.png",
