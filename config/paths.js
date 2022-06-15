@@ -70,27 +70,13 @@ module.exports = {
       template: resolveApp('public/devtool.html'),
       chunks: ['devtool'],
       filename: 'devtool.html'
-    },
-    {
-      inject: true,
-      template: resolveApp('public/statistics.html'),
-      chunks: ['statistics'],
-      filename: 'statistics.html'
-    },
-    {
-      inject: true,
-      template: resolveApp('public/config.html'),
-      chunks: ['config'],
-      filename: 'config.html'
-    },
+    }
   ],
   appAllEntries: {
    popup: resolveModule(resolveApp, 'src/popup/index'),
-   statistics: resolveModule(resolveApp, 'src/popup/statistics/index'),
    background: resolveModule(resolveApp, 'src/background/index'),
    content: resolveModule(resolveApp, 'src/content/index'),
    devtool: resolveModule(resolveApp, 'src/devtool/index'),
-   config: resolveModule(resolveApp, 'src/popup/config/index'),
   },
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
