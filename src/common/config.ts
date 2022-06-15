@@ -1,12 +1,6 @@
 export const highlightClassName = 'extension-highlight' // 高亮关键词的公共类名
 export const highlightStyleClassPrefix = 'extension-highlight-style-' // 高亮关键词特性前缀
 export const highlightWarpperClassName = 'extension-highlight-useless-class' // 高亮关键词包裹类名 
-const whitelist = ['mmbiz.oa.com', 'mp.weixinbridge.com']
-export const defaultPopupConfig = {
-  switchFlag: true,
-  keyword: '',
-  whitelist: whitelist.join('\n') // 预设的白名单
-}
 
 export const getTime = (time = 'day', type = 'ms') => {
   const timeMap: any = {
